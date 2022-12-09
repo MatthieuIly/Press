@@ -1,0 +1,19 @@
+{
+    "name": "sankokai/press",
+    "description": "Un élégant Markdown-powered blog pour le framework Laravel",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Sankokai\\Press\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Matthieu ILY",
+            "email": "matthieu.ily@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "orchestra/testbench": "^7.15"
+    }
+}
