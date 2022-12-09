@@ -7,10 +7,14 @@ use Illuminate\Support\Facades\File;
 
 class PressFileParser
 {
+    protected $filename;
+
     protected $data;
 
-    public function __construct(protected string $filename)
+    public function __construct(string $filename)
     {
+        $this->filename = $filename;
+
         $this->splitFile();
 
         $this->explodeData();
@@ -47,12 +51,21 @@ class PressFileParser
     public function processFields()
     {
         foreach($this->data as $field => $value) {
-            if ($field === 'date') {
+            // if ($field === 'date') {
                 // dd(Carbon::parse($value));
-                $this->data[$field] = Carbon::parse($value);
-            } elseif ($field === 'body') {
-                $this->data[$field] = MarkdownParser::parse($value);
-            }
+                // $this->data[$field] = Carbon::parse($value);
+                $class = 'Sankokai\\Press\\Fields\\' . \Illuminate\Support\Str::title($field);
+                
+                if (class_exists($class) && method_exists($class, 'process')) {
+                    $this->data = array_merge(
+                        $this->data,
+                        $class::process($field, $value)
+                    );
+                    // dd($this->data);
+                }
+            // } elseif ($field === 'body') {
+            //     $this->data[$field] = MarkdownParser::parse($value);
+            // }
         }
     }
 }

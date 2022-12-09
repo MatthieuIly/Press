@@ -2,15 +2,14 @@
 
 namespace Sankokai\Press\Fields;
 
-use Carbon\Carbon;
+use Sankokai\Press\MarkdownParser;
 
-class Date
+class Body
 {
     public static function process($type, $value)
     {
         return [
-            $type => Carbon::parse($value),
-            'parsed_at' => Carbon::now(),
+            $type => MarkdownParser::parse($value)
         ];
     }
 }
