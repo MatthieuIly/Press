@@ -7,6 +7,11 @@
             "Sankokai\\Press\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Sankokai\\Press\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Matthieu ILY",
@@ -15,5 +20,8 @@
     ],
     "require-dev": {
         "orchestra/testbench": "^7.15"
+    },
+    "require": {
+        "erusev/parsedown": "^1.7"
     }
 }
