@@ -63,10 +63,10 @@ class PressFileParser
             if (!class_exists($class) && !method_exists($class, 'process')) {
                 $class = 'Sankokai\\Press\\Fields\\Extra';
             }
-            
+
             $this->data = array_merge(
                 $this->data,
-                $class::process($field, $value)
+                $class::process($field, $value, $this->data)
             );
             // dd($this->data);
         

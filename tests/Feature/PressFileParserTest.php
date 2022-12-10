@@ -76,4 +76,14 @@ class PressFileParserTest extends TestCase
 
         $this->assertEquals(json_encode(['author' => 'John Doe']), $data['extra']);
     }
+
+    /** @test */
+    public function two_additional_fields_are_put_into_extra()
+    {
+        $pressFileParser = (new PressFileParser("---\nauthor: John Doe\nimage: some/image.jpg\n---\n"));
+
+        $data = $pressFileParser->getData();
+
+        $this->assertEquals(json_encode(['author' => 'John Doe', 'image' => 'some/image.jpg']), $data['extra']);
+    }
 }
