@@ -1,9 +1,9 @@
 <?php
 
-namespace Sankokai\Tests\Feature;
+namespace Sankokai\Press\Tests\Feature;
 
 use Carbon\Carbon;
-use Orchestra\Testbench\TestCase;
+use Sankokai\Press\Tests\TestCase;
 use Sankokai\Press\PressFileParser;
 
 class PressFileParserTest extends TestCase

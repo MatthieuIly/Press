@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Feature;
+namespace Sankokai\Press\Tests\Feature;
 
 use Parsedown;
-use Orchestra\Testbench\TestCase;
 use Sankokai\Press\MarkdownParser;
+use Sankokai\Press\Tests\TestCase;
 
 class MarkdownTest extends TestCase
 {

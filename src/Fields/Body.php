@@ -4,7 +4,7 @@ namespace Sankokai\Press\Fields;
 
 use Sankokai\Press\MarkdownParser;
 
-class Body
+class Body extends FieldContract
 {
     public static function process($type, $value, $data)
     {
