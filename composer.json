@@ -4,7 +4,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Sankokai\\Press\\": "src/"
+            "Sankokai\\Press\\": "src/",
+            "Sankokai\\Press\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {

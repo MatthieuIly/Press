@@ -1,7 +1,9 @@
 <?php
 
+namespace Sankokai\Press\Database\Factories;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Sankokai\Press\Post;
+use Sankokai\Press\Models\Post;
 use Illuminate\Support\Str;
 
 
@@ -17,7 +19,7 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-        $faker = Faker\Factory::create('fr_FR');
+        $faker = \Faker\Factory::create('fr_FR');
         return [
             'identifier' => Str::random(),
             'slug' => Str::slug($faker->sentence),
