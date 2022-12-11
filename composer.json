@@ -26,5 +26,12 @@
     "require": {
         "php": "8.1.*",
         "erusev/parsedown": "^1.7"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sankokai\\Press\\PressBaseServiceProvider"
+            ] 
+        }
     }
 }
