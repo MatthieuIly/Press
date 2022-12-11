@@ -1,7 +1,5 @@
 <?php
 
-namespace Sankokai\Press\Database\Migration;
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
