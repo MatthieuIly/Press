@@ -2,6 +2,7 @@
 
 namespace Sankokai\Press\Repositories;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Sankokai\Press\Models\Post;
 
@@ -15,7 +16,16 @@ class PostRepository
             'slug' => Str::slug($post['title']),
             'title' => $post['title'],
             'body' => $post['body'],
-            'extra' => $post['extra'] ?? json_encode([]) ,
+            'extra' => $this->extra($post) ,
         ]);
+    }
+
+    public function extra($post)
+    {
+        $extra = (array)json_decode($post['extra'] ?? '[]');
+        //$post['extra'] ?? json_encode([]);
+        $attributes = Arr::except($post, ['title', 'body', 'identifier', 'extra']);
+
+        return json_encode(array_merge($extra, $attributes));
     }
 }
