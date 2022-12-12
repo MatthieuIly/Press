@@ -4,6 +4,7 @@ namespace Sankokai\Press;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Sankokai\Press\Facades\Press;
 
 class PressBaseServiceProvider extends ServiceProvider
 {
@@ -28,7 +29,9 @@ class PressBaseServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'press');
 
+        $this->registerFacades();
         $this->registerRoutes();
+
     }
 
     protected function registerPublishing() 
@@ -50,5 +53,12 @@ class PressBaseServiceProvider extends ServiceProvider
         return [
             'prefix' => Press::path(),
         ];
+    }
+
+    private function registerFacades()
+    {
+        $this->app->singleton('Press', function ($app) {
+            return new \Sankokai\Press\Press();
+        });
     }
 }

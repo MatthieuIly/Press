@@ -1,16 +1,17 @@
 <?php
 
 namespace Sankokai\Press;
+
 use Illuminate\Support\Str;
 
 class Press
 {
-    public static function configNotPublished()
+    public function configNotPublished()
     {
         return is_null(config('press'));
     }
 
-    public static function driver()
+    public function driver()
     {
         $driver = Str::title(config('press.driver'));
 
@@ -19,7 +20,7 @@ class Press
         return new $class;
     }
 
-    public static function path()
+    public function path()
     {
         return config('press.path', 'blogs');
     }

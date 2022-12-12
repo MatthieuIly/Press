@@ -2,12 +2,10 @@
 
 namespace Sankokai\Press\Console;
 
-use Sankokai\Press\Press;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Sankokai\Press\Models\Post;
-use Sankokai\Press\PressFileParser;
-use Illuminate\Support\Facades\File;
+use Sankokai\Press\Facades\Press;
 
 class ProcessCommand extends Command
 {
