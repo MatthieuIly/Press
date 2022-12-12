@@ -14,4 +14,9 @@ class Post extends Model
     {
         return \Sankokai\Press\Database\Factories\PostFactory::new();
     }
+
+    public function extra($field)
+    {
+        return optional(json_decode($this->extra))->$field;
+    }
 }

@@ -3,6 +3,8 @@
 namespace Sankokai\Press;
 
 use Carbon\Carbon;
+use ReflectionClass;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 
 class PressFileParser
@@ -58,7 +60,7 @@ class PressFileParser
     public function processFields()
     {
         foreach($this->data as $field => $value) {
-            $class = 'Sankokai\\Press\\Fields\\' . \Illuminate\Support\Str::title($field);
+            $class = $this->getField(Str::title($field));
             
             if (!class_exists($class) && !method_exists($class, 'process')) {
                 $class = 'Sankokai\\Press\\Fields\\Extra';
@@ -68,9 +70,17 @@ class PressFileParser
                 $this->data,
                 $class::process($field, $value, $this->data)
             );
-            // dd($this->data);
-        
-        
+        }
+    }
+
+    private function getField($field)
+    {
+        foreach(\Sankokai\Press\Facades\Press::availableFields() as $availableField) {
+            $class = new ReflectionClass($availableField);
+
+            if ($class->getShortName() == $field) {
+                return $class->getName();
+            }
         }
     }
 }
