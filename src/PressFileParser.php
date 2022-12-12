@@ -62,7 +62,7 @@ class PressFileParser
         foreach($this->data as $field => $value) {
             $class = $this->getField(Str::title($field));
             
-            if (!class_exists($class) && !method_exists($class, 'process')) {
+            if ((!$class) || (!class_exists($class) && !method_exists($class, 'process'))) {
                 $class = 'Sankokai\\Press\\Fields\\Extra';
             }
 

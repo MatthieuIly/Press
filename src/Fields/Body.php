@@ -6,10 +6,10 @@ use Sankokai\Press\MarkdownParser;
 
 class Body extends FieldContract
 {
-    public static function process($type, $value, $data)
+    public static function process($fieldType, $fieldValue, $data)
     {
         return [
-            $type => MarkdownParser::parse($value)
+            $fieldType => MarkdownParser::parse($fieldValue)
         ];
     }
 }
