@@ -25,15 +25,14 @@ class ProcessCommand extends Command
             // Fetch all posts
             $posts = Press::driver()->fetchPosts();
             
-
             // Persis to the DB
             foreach ($posts as $post) {
                 Post::Create([
                     'identifier' => $post['identifier'],
-                    'slug' => Str::slug($post->title),
+                    'slug' => Str::slug($post['title']),
                     'title' => $post['title'],
                     'body' => $post['body'],
-                    'extra' => $post['extra'] ?? [] ,
+                    'extra' => $post['extra'] ?? '' ,
                 ]);
             }
         } catch(\Exception $e) {

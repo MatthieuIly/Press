@@ -1,6 +1,6 @@
 <?php
 
-namespace Exceptions;
+namespace Sankokai\Press\Exceptions;
 
 use Exception;
 

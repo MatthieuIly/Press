@@ -13,5 +13,7 @@ return [
 
     'gist' => [
         'source' => '123123',
-    ]
+    ],
+
+    'path' => 'blogs',
 ];

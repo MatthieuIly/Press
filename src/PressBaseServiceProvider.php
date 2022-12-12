@@ -40,8 +40,15 @@ class PressBaseServiceProvider extends ServiceProvider
 
     protected function registerRoutes()
     {
-        Route::group([], function () {
+        Route::group($this->routeConfiguration(), function () {
             $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         });
+    }
+
+    private function routeConfiguration()
+    {
+        return [
+            'prefix' => Press::path(),
+        ];
     }
 }
